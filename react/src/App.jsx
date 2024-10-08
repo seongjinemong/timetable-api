@@ -62,7 +62,7 @@ function App() {
       </div>
 
       {/* 작성한 코드 */}
-      <div className="flex flex-col gap-4 mt-4">
+      <div className="flex flex-col gap-4 mt-4 items-center">
         {/* 구글 로그인 버튼 + 기능 */}
         <GoogleAuth />
 
