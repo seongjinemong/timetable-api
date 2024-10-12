@@ -32,15 +32,15 @@ app.use(
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    resave: false,
+    resave: true,
     saveUninitialized: false,
     cookie: {
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
-      httpOnly: true, // 추가
+      httpOnly: true,
     },
     store: new FileStore({
-      path: "./sessions", // 추가
+      path: "./sessions",
     }),
   })
 );
