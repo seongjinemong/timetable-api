@@ -35,7 +35,8 @@ app.use(
     resave: true,
     saveUninitialized: false,
     cookie: {
-      secure: process.env.NODE_ENV === "production",
+      // secure: process.env.NODE_ENV === "production",
+      secure: false,
       sameSite: "lax",
       httpOnly: true,
     },
