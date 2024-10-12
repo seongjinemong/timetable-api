@@ -5,7 +5,7 @@ import axios from 'axios'
 // axios 인스턴스 생성
 const customAaxios = axios.create({
   // .env에서 서버 URL 받은 후 baseURL로 설정
-  baseURL: import.meta.env.VITE_SERVER_URL,
+  baseURL: import.meta.env.VITE_SERVER_URL === "production" ? import.meta.env.VITE_SERVER_URL : "http://localhost:3000",
 })
 
 // baseURL을 설정하면 axios를 호출할 때 중복되는 url을 수정할 수 있음

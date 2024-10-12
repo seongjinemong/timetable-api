@@ -8,18 +8,21 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const cors = require("cors");
 
-require('dotenv').config();
+require("dotenv").config();
 
 var app = express();
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs'); // or 'pug', 'hbs', etc., depending on your preferred template engine
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs"); // or 'pug', 'hbs', etc., depending on your preferred template engine
 
 app.use(cookieParser(process.env.SESSION_SECRET));
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin:
+      process.env.NODE_ENV === "production"
+        ? process.env.ORIGIN
+        : "http://localhost:5173",
     credentials: true,
     methods: ["GET", "POST", "OPTIONS"], // 추가
     allowedHeaders: ["Content-Type", "Authorization"], // 추가
@@ -63,7 +66,7 @@ app.use(function (err, req, res, next) {
 
   // Render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render("error");
 });
 
 module.exports = app;
