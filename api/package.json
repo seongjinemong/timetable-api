@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "dev": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
     "test": "node app.js",
     "build": "npx webpack"
   },

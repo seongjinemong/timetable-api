@@ -94,7 +94,11 @@ function App() {
               // 로그인 정보 확인 도중 에러 발생할 수 있으므로 try catch 사용
               try {
                 // 서버에서 로그인 정보 확인
-                const res = await customAaxios.post("/user/login", credentials);
+                const res = await customAaxios.post(
+                  "/user/login",
+                  credentials,
+                  { withCredentials: true }
+                );
                 // 확인 여부 콘솔에 표시
                 console.log("Verified", res.data.payload.email_verified);
 
@@ -124,6 +128,45 @@ function App() {
           }}
         >
           Verify User
+        </button>
+
+        <button
+          // 위에서 만든 verifying state에 따라 버튼 활성화 여부 결정
+          disabled={verifying}
+          onClick={async () => {
+            // verify state true로 변경 -> 버튼 비활성화
+            setVerifying(true);
+
+            // 만약 로그인 정보가 있다면
+            if (credentials) {
+              // 로그인 정보 확인 도중 에러 발생할 수 있으므로 try catch 사용
+              try {
+                // 서버에서 로그인 정보 확인
+                const res = await customAaxios.get("/user/checkSessionData", {
+                  withCredentials: true,
+                });
+                // 확인 여부 콘솔에 표시
+                console.log("Session Data", res);
+
+                toast.success(res.data);
+              } catch (e) {
+                // try catch에서 에러가 발생할 수 있는 부분은 Network Error
+                // 에러 내용 출력
+                console.log(e);
+                // 에러 발생 알림
+                toast.error(e.message);
+              }
+            } else {
+              // 로그인 정보 없다면
+              // 로그인 되지 않았다고 알림
+              toast.error("Not Logged In");
+            }
+
+            // verify state true로 변경 -> 버튼 활성화
+            setVerifying(false);
+          }}
+        >
+          Get Session Data
         </button>
       </div>
     </>
