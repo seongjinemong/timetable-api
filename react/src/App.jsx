@@ -69,6 +69,14 @@ function App() {
         {/* 로그인 정보가 있다면 clientId를 출력하고, 없다면 로그인되어있지 않다고 출력 */}
         <div>{credentials ? `${credentials.clientId}` : "Not Logged In"}</div>
 
+        <button
+          onClick={() => {
+            window.location.href = '/profile'
+          }}
+        >
+          Profile Page
+        </button>
+
         {/* 로그아웃 구현 버튼 */}
         <button
           onClick={() => {
