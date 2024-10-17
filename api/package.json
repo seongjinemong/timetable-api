@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon ./bin/www",
     "test": "node app.js",
-    "build": "npx webpack"
+    "vercel-build": "echo verce-build"
   },
   "author": "",
   "license": "ISC",
