@@ -2,9 +2,13 @@
   "name": "api",
   "version": "1.0.0",
   "main": "bin/www",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "dev": "nodemon ./bin/www",
     "test": "node app.js",
+    "start": "node ./bin/www",
     "vercel-build": "echo verce-build"
   },
   "author": "",
