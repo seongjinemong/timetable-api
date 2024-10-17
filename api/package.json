@@ -6,10 +6,11 @@
     "node": "20.x"
   },
   "scripts": {
+    "verceldev":"vercel dev",
     "dev": "nodemon ./bin/www",
     "test": "node app.js",
     "start": "node ./bin/www",
-    "vercel-build": "echo verce-build"
+    "vercel-build": "echo vercel-build"
   },
   "author": "",
   "license": "ISC",
