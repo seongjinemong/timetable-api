@@ -9,7 +9,7 @@
     "verceldev":"vercel dev",
     "dev": "nodemon ./bin/www",
     "test": "node app.js",
-    "start": "node ./bin/www",
+    "start": "node app.js",
     "vercel-build": "echo vercel-build"
   },
   "author": "",
