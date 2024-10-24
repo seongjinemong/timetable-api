@@ -150,7 +150,7 @@ function App() {
               // 로그인 정보 확인 도중 에러 발생할 수 있으므로 try catch 사용
               try {
                 // 서버에서 로그인 정보 확인
-                const res = await customAaxios.get("/user/checkSessionData", {
+                const res = await customAaxios.get("/user/profile", {
                   withCredentials: true,
                 });
                 // 확인 여부 콘솔에 표시
