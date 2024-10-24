@@ -155,7 +155,7 @@ function App() {
                 // 확인 여부 콘솔에 표시
                 console.log("Session Data", res);
 
-                toast.success(res.data.sessionData);
+                toast.success(res.data);
               } catch (e) {
                 // try catch에서 에러가 발생할 수 있는 부분은 Network Error
                 // 에러 내용 출력
