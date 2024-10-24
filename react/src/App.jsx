@@ -108,10 +108,9 @@ function App() {
                   { withCredentials: true }
                 );
                 // 확인 여부 콘솔에 표시
-                console.log("Verified", res.data.payload.email_verified);
 
                 // 인증된 사용자라면
-                if (res.data.payload.email_verified) {
+                if (res.data) {
                   // 인증 확인 알림
                   toast.success("Verified");
                 } else {

@@ -1,5 +1,7 @@
 import { jwtDecode } from "jwt-decode";
 import { useAuthStore } from "../lib/store";
+import { useEffect, useState } from "react";
+import customAaxios from "../lib/axios";
 
 export default function Profile() {
   const credentials = useAuthStore((state) => state.credentials);
@@ -8,6 +10,20 @@ export default function Profile() {
   if (credentials) info = jwtDecode(credentials.credential);
 
   console.log(info);
+
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    async function fetchProfile() {
+      if (credentials) {
+        const res = await customAaxios.get("/user/profile", {
+          withCredentials: true,
+        });
+        setProfile(res.data);
+      }
+    }
+    fetchProfile();
+  }, [credentials]);
 
   return (
     <>
@@ -25,6 +41,8 @@ export default function Profile() {
         ) : (
           <div>Not Logged In</div>
         )}
+
+        {profile ? <div>{`${JSON.stringify(profile)}`}</div> : <></>}
       </div>
     </>
   );
